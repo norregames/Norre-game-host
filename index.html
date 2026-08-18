@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NorreGames PS4 Host</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <img src="assets/logo.png" alt="NorreGames" class="logo" onerror="this.style.display='none'">
+        <h1>NorreGames Host</h1>
+        <p>Firmware : <span class="firmware">9.00</span></p>
+        <div id="status">Chargement de l'environnement NorreGames...</div>
+    </header>
+
+    <div class="container">
+        <button class="btn" onclick="loadGoldHen('2.4b14')">GoldHEN v2.4b14 <span>Lancer le Jailbreak Direct (No USB)</span></button>
+        <button class="btn" onclick="loadPayload('ftp')">FTP Server <span>Accéder au disque dur en FTP</span></button>
+        <button class="btn" onclick="loadPayload('webrte')">WebRTE Cheats <span>Activer le système de triche</span></button>
+        <button class="btn" onclick="loadPayload('backup')">Sauvegarde DB <span>Créer un backup système</span></button>
+    </div>
+
+    <footer>
+        <p>Propulsé par NorreGames © 2026 | Thème Bleu PlayStation | No-USB Mod</p>
+    </footer>
+
+    <script src="exploit/psfree.js"></script>
+    <script src="exploit/kernel.js"></script> 
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+            .then(function() {
+                updateStatus("Host NorreGames enregistré ! Prêt pour le mode Hors-Ligne.");
+            }).catch(function(err) {
+                updateStatus("Erreur de cache : " + err);
+            });
+        }
+
+        function updateStatus(message) {
+            document.getElementById('status').innerText = message;
+        }
+
+        function loadGoldHen(v) {
+            updateStatus("Exécution de PSFree & GoldHEN " + v + "... Veuillez patienter.");
+            setTimeout(function() {
+                if (typeof runExploit === "function") {
+                    runExploit();
+                } else {
+                    updateStatus("Erreur : Les scripts PSFree dans le dossier 'exploit/' sont manquants.");
+                }
+            }, 500);
+        }
+
+        function loadPayload(name) {
+            updateStatus("Préparation de l'injection du payload : " + name.toUpperCase());
+            setTimeout(function() {
+                if (typeof injectPayload === "function") {
+                    injectPayload(name + ".bin");
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
