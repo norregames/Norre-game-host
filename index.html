@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" manifest="cache.appcache">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
         <img src="assets/logo.png" alt="NorreGames" class="logo" onerror="this.style.display='none'">
         <h1>NorreGames Host</h1>
         <p>Firmware : <span class="firmware">9.00</span></p>
-        <div id="status">Chargement de l'environnement NorreGames...</div>
+        <div id="status">Initialisation du host NorreGames...</div>
     </header>
 
     <div class="container">
@@ -23,21 +23,41 @@
     </div>
 
     <footer>
-        <p>Propulsé par NorreGames © 2026 | Thème Bleu PlayStation | No-USB Mod</p>
+        <p>Propulsé par NorreGames © 2026 | Thème Bleu PlayStation | Cache PS4 Fix</p>
     </footer>
 
+    <!-- Scripts techniques d'exploitation PSFree -->
     <script src="exploit/psfree.js"></script>
     <script src="exploit/kernel.js"></script> 
 
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-            .then(function() {
-                updateStatus("Host NorreGames enregistré ! Prêt pour le mode Hors-Ligne.");
-            }).catch(function(err) {
-                updateStatus("Erreur de cache : " + err);
-            });
-        }
+        // --- SYSTÈME DE MISE EN CACHE SPÉCIAL PS4 ---
+        var cache = window.applicationCache;
+        
+        cache.addEventListener('checking', function() {
+            updateStatus("Vérification des fichiers du host...");
+        }, false);
+
+        cache.addEventListener('downloading', function() {
+            updateStatus("Mise en cache du Host NorreGames... Veuillez patienter.");
+        }, false);
+
+        cache.addEventListener('progress', function(e) {
+            updateStatus("Téléchargement : " + Math.round((e.loaded / e.total) * 100) + "%");
+        }, false);
+
+        cache.addEventListener('cached', function() {
+            updateStatus("Host NorreGames enregistré ! Prêt pour le mode Hors-Ligne.");
+            alert("Mise en cache réussie ! Vous pouvez couper Internet et ajouter cette page à vos Signets (Favoris).");
+        }, false);
+
+        cache.addEventListener('noupdate', function() {
+            updateStatus("Host prêt ! Chargé depuis la mémoire locale (Hors-Ligne).");
+        }, false);
+
+        cache.addEventListener('error', function() {
+            updateStatus("Erreur de mise en cache. Vérifiez l'adresse ou vos fichiers.");
+        }, false);
 
         function updateStatus(message) {
             document.getElementById('status').innerText = message;

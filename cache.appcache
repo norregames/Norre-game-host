@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# v2.0 - NorreGames Fixed Cache
+
+CACHE:
+index.html
+style.css
+assets/logo.png
+assets/background.jpg
+exploit/psfree.js
+exploit/kernel.js
+
+NETWORK:
+*
