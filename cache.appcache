@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# v3.0 - NorreGames Standalone Fix
+
+CACHE:
+index.html
+style.css
+assets/logo.png
+assets/background.jpg
+
+NETWORK:
+*
