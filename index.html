@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr" manifest="cache.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORRE GAMES Host | PS4 FW 9.00 GoldHEN</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="exploit.js" defer></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="logo-title">
+                <img src="assets/logo_simple.png" alt="NORRE GAMES Simple Logo" class="header-logo">
+                <h1>NORRE GAMES</h1>
+            </div>
+            <p class="subtitle">PS4 FW 9.00 GoldHEN Hôte Hors-Ligne Officiel</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Status Panel -->
+            <section class="card status-card">
+                <div class="status-header">
+                    <span class="status-indicator" id="status-dot"></span>
+                    <span id="status-text">Initialisation...</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="status-subtext" id="status-subtext">Vérification de la mise en cache hors-ligne...</div>
+            </section>
+
+            <!-- Payload Controls -->
+            <section class="payload-grid">
+                <button class="payload-btn primary" onclick="loadGoldHEN()">
+                    <img src="assets/logo_3d.png" alt="GoldHEN 3D Logo" class="payload-logo">
+                    <div class="btn-info">
+                        <h3>GoldHEN v2.4b16</h3>
+                        <p>Lancer le chargeur principal pour FW 9.00</p>
+                    </div>
+                </button>
+
+                <button class="payload-btn" onclick="loadPayload('psfree')">
+                    <div class="btn-icon">🔓</div>
+                    <div class="btn-info">
+                        <h3>PSFree WebKit</h3>
+                        <p>Exploit WebKit haute stabilité</p>
+                    </div>
+                </button>
+
+                <button class="payload-btn" onclick="loadPayload('binloader')">
+                    <div class="btn-icon">📦</div>
+                    <div class="btn-info">
+                        <h3>BinLoader (Port 9020)</h3>
+                        <p>Injecter vos propres payloads .bin</p>
+                    </div>
+                </button>
+
+                <button class="payload-btn" onclick="clearHostCache()">
+                    <div class="btn-icon">🧹</div>
+                    <div class="btn-info">
+                        <h3>Réinitialiser Cache</h3>
+                        <p>Effacer et recharger la mémoire</p>
+                    </div>
+                </button>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Conçu pour le jailbreak PS4 FW 9.00 | Utilisation Hors-Ligne</p>
+            <p class="credits credits-ng">Propulsé par NORRE GAMES</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# Version 1.1.0 - NORRE GAMES Host for GoldHEN
+
+CACHE:
+index.html
+style.css
+exploit.js
+goldhen.bin
+assets/logo_simple.png
+assets/logo_3d.png
+
+NETWORK:
+*
